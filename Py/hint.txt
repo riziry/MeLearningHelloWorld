@@ -1,0 +1,5 @@
+++print++
+Print("Str")
+Print(7)
+print("string and int = " + int(7))    #kebalikan nya sama
+

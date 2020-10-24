@@ -1,0 +1,28 @@
+++(See terminal Location)++
+pwd
+
+++(See file list)++
+ls
+
+++(Move now directories)++
+-(Move to home)-
+cd
+-(Move back)
+cd ..
+-(move to)-
+cd folder_name
+
+++(Making new folder)++
+mkdir name_of_the_folder
+
+++MV++
+-(rename)-
+mv old_name new_name
+-(move)-
+mv location_rn location_new
+
+++(copy)++
+-(copying a file)-
+cp file_to_copy new_file_name
+-(copying a directory)
+cp -r dir_to_copy new_dir_namessss
