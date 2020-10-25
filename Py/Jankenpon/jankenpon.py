@@ -17,8 +17,11 @@ name = engine.iName(name)
 
 #User Pick Hand
 uHand = engine.user(uHand, name)
+cHand = engine.cpu(cHand)
 
-print(engine.hand[uHand])
+print(cHand)
+print("CPU: ", engine.hand[cHand])
+print("User: ", engine.hand[uHand])
 
 
 

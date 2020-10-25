@@ -24,8 +24,9 @@ def iName(name):
 	name = input('Enter Name: ')
 	return name
 
-def cpu():
-	print("test")
+def cpu(cHand):
+	cHand = random.randint(0,2)
+	return cHand
 	
 def user(uHand, name):
 	print(Fore.YELLOW + "+[0: Rock, 1: Paper, 2: Scissors]+" + Fore.WHITE)
