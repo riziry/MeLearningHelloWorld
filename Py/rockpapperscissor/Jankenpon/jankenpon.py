@@ -19,9 +19,10 @@ name = engine.iName(name)
 uHand = engine.user(uHand, name)
 cHand = engine.cpu(cHand)
 
-print(cHand)
-print("CPU: ", engine.hand[cHand])
-print("User: ", engine.hand[uHand])
+#starting game
+engine.game(cHand, uHand, name)
+
+
 
 
 
