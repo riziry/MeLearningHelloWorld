@@ -5,18 +5,18 @@ import random
 pygame.init()
 '''
 white = (255, 255, 255)
-yellow = (255, 255, 102)
-black = (0, 0, 0) #harus ijo
-red = (213, 50, 80)
-green = (0, 255, 0) #harus merah
-blue = (50, 153, 213) #jadi item
+score_color = (255, 255, 102)
+snake_color = (0, 0, 0) #harus ijo
+gameover_text = (213, 50, 80)
+food_color = (0, 255, 0) #harus merah
+background_color = (50, 153, 213) #jadi item
 '''
 white = (255, 255, 255)
-yellow = (255, 255, 102)
-black = (0, 255, 0)
-green = (213, 50, 80)
-blue = (0, 0, 0)
-red = (255, 255, 102)
+score_color = (255, 255, 102)
+snake_color = (0, 255, 0)
+food_color = (213, 50, 80)
+background_color = (0, 0, 0)
+gameover_text = (255, 255, 102)
  
 dis_width = 600
 dis_height = 400
@@ -34,14 +34,14 @@ score_font = pygame.font.SysFont("comicsansms", 35)
  
  
 def Your_score(score):
-    value = score_font.render("Your Score: " + str(score), True, yellow)
+    value = score_font.render("Your Score: " + str(score), True, score_color)
     dis.blit(value, [0, 0])
  
  
  
 def our_snake(snake_block, snake_list):
     for x in snake_list:
-        pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
+        pygame.draw.rect(dis, snake_color, [x[0], x[1], snake_block, snake_block])
  
  
 def message(msg, color):
@@ -68,8 +68,8 @@ def gameLoop():
     while not game_over:
  
         while game_close == True:
-            dis.fill(blue)
-            message("You Lost! Press C-Play Again or Q-Quit", red)
+            dis.fill(background_color)
+            message("You Lost! Press C-Play Again or Q-Quit", gameover_text)
             Your_score(Length_of_snake - 1)
             pygame.display.update()
  
@@ -102,8 +102,8 @@ def gameLoop():
             game_close = True
         x1 += x1_change
         y1 += y1_change
-        dis.fill(blue)
-        pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])
+        dis.fill(background_color)
+        pygame.draw.rect(dis, food_color, [foodx, foody, snake_block, snake_block])
         snake_Head = []
         snake_Head.append(x1)
         snake_Head.append(y1)
