@@ -1,3 +1,4 @@
+#belom kelar
 import pygame
 pygame.init()
 
