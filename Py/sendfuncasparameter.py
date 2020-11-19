@@ -49,7 +49,8 @@ recur_fibonacci(1000000,100000)
 print(fib_list)
 
 # generator
-# so basically from what i get, yield mean return but multiple variable
+# =so basically from what i get, 
+# =yield mean return but multiple variable
 def gen():
 	a = 1
 	while a <= 10 :
@@ -58,4 +59,18 @@ def gen():
 		a += 1
 
 print(list(gen()))
-		
+
+# excercise
+def messageOne():
+	def messageTwo():
+		def messageThree():
+			print("Three")
+		messageThree()
+		print("Two")
+	messageTwo()
+	print("One")
+
+messageOne()
+# if we have local var like this, the only way
+# to call it is make a global variable with the
+# name of the func before we write the func
