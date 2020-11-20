@@ -24,7 +24,7 @@ class ticketActive:
 		self.totalPrice = totalPrice
 		
 listTicketActive = [
-						ticketActive('1', 'test', '1301194266', '1', '2', '10000')
+						
 						]
 listTicket = [
 				tickeData('1', 'Jakarta', 'Bandung', '100000'), 
@@ -94,7 +94,7 @@ def menutxt():
 	print(Fore.YELLOW + "(2)" + Fore.WHITE + " See active ticket list")
 	# print("----------------------------------|")
 	print(Fore.YELLOW + "(3)" + Fore.WHITE + " Add data to ticket list")
-	print(Fore.YELLOW + "(4)" + Fore.WHITE + " remove data ticket from list(error)")
+	print(Fore.YELLOW + "(4)" + Fore.WHITE + " remove data ticket from list")
 	print(Fore.YELLOW + "(5)" + Fore.WHITE + " Buy a ticket")
 	print(Fore.YELLOW + "(6)" + Fore.WHITE + " Banned active ticket")
 	print(Fore.YELLOW + '(' + Fore.RED + "q" + Fore.YELLOW + ')' + Fore.WHITE + " Quit Program")
@@ -117,9 +117,11 @@ def menu():
 			rmDataTicket()
 			GateBackToMenu()
 		elif inputchoice == '5':
-			pass
+			buyTicket()
+			GateBackToMenu()
 		elif inputchoice == '6':
-			pass
+			banActiveTicket()
+			GateBackToMenu()
 		else:
 			print(Fore.RED + "Type the right choice from menu" + Fore.WHITE)
 
@@ -135,8 +137,11 @@ def seeTicketData():
 	print(Fore.YELLOW + 'List Data ticket' + Fore.WHITE)
 	print("| ID | from	| To 	  | Price	|")
 	print("----------------------------------------")
-	for x in listTicket:
-		print('  ' + x.ID + '   ' + x.fromS + '	 ' + x.toS + " 	" + x.price)
+	if len(listTicket) > 0:
+		for x in listTicket:
+			print('  ' + x.ID + '   ' + x.fromS + '	 ' + x.toS + " 	" + x.price)
+	else:
+		print("There is no data ticket")
 
 def seeActiveTicket():
 	os.system('clear')
@@ -155,17 +160,28 @@ def seeActiveTicket():
 
 def addDataTicket():
 	os.system('clear')
+	seeTicketData()
 	print(Fore.YELLOW + 'Add Data Ticket Menu' + Fore.WHITE)
 	inputID = str(len(listTicket)+1)
 	inputFrom = input("From Station: ")
 	inputTo = input("To Station  : ")
 	inputPrice = input("Price      : ")
 
-	listTicket.append(tickeData(inputID , inputFrom, inputTo, inputPrice))
-	print(Fore.GREEN + "Data Succesfully Added" + Fore.WHITE)
+	isFound = False
+	for x in listTicket:
+		if x.fromS == inputFrom and x.toS == inputTo:
+			isFound = True
+			break
+
+	print(isFound)
+	if isFound == True:
+		print("There is similar data inside data ticket")
+	else:
+		listTicket.append(tickeData(inputID , inputFrom, inputTo, inputPrice))
+		print(Fore.GREEN + "Data Succesfully Added" + Fore.WHITE)
 
 def rmDataTicket():
-	'''
+	
 	seeTicketData()
 	print(Fore.YELLOW + "Delete Data Ticket" + Fore.WHITE)
 
@@ -173,16 +189,10 @@ def rmDataTicket():
 	found = False
 	x = 0
 	while x < len(listTicket):
-		if inputchoice == listTicket.ID[x]
-		print(True)
-
-	# for x in listTicket:
-	# 	if inputchoice == x.ID:
-	# 		found = True
-	# 		index = x
-	# 		print(x)
-	# 		break
-
+		if inputchoice == listTicket[x].ID:
+			found = True
+			break
+		x += 1
 	
 	if found == True:
 		print(Fore.RED + '-- *[' + Fore.YELLOW + 'Warning'+ Fore.RED + ']* --')
@@ -193,13 +203,79 @@ def rmDataTicket():
 			inputchoice = input("Proceed? [y/n]")
 
 		if inputchoice == 'y':
-			listTicket[x] = 0
+			listTicket.pop(x)
+			print(Fore.GREEN + 'Data with ID', x+1, 'Succesfully Deleted' + Fore.WHITE)
+			newID = 1
+			for i in listTicket:
+				i.ID = str(newID)
+				newID += 1
+				# print(i.ID, i.price) #masih kudu di perbaikin biar kalo nge pop nya elmt atas dia ga ke -
 		else:
 			print('Operation Aborted')
 	else:
 		print('Data Not Found')
 
-	'''
+def buyTicket():
+	os.system('clear')
+	seeTicketData()
+	print(Fore.YELLOW + 'Buy ticket' + Fore.WHITE)
+	inputID = str(len(listTicketActive)+1)
+	inputName = input("Name        : ")
+	inputKtp = input("Ktp Number  : ")
+	inputTID = input("Ticket ID   : ")
+	inputQlt = input("How many    : ")
+	ttPrice = 0
+
+	found = False
+	for x in listTicket:
+		if inputTID == x.ID:
+			ttPrice = str(int(x.price)*int(inputQlt))
+			print(ttPrice)
+			found = True
+			break
+
+	if found == False:
+		print(Fore.RED + "Wrong Ticket ID" + Fore.YELLOW)
+		print("See ticket ID from ticket list" + Fore.WHITE)
+	else:
+		listTicketActive.append(ticketActive(inputID, inputName, inputKtp, inputTID, inputQlt, ttPrice))
+		seeActiveTicket()
+		print(Fore.GREEN + '\nSuccesfully Buy ticket' + Fore.WHITE)
+
+def banActiveTicket():
+	os.system('clear')
+	seeActiveTicket()
+	print(Fore.YELLOW + 'Banned Active ticket' + Fore.WHITE)
+
+	inputchoice = input("Input ID ticket you want to banned :")
+
+	found = False
+	x = 0
+	while x < len(listTicketActive):
+		if inputchoice == listTicketActive[x].ID:
+			found = True
+			break
+		x += 1
+
+	if found:
+		print(Fore.RED + '-- *[' + Fore.YELLOW + 'Warning'+ Fore.RED + ']* --')
+		print(Fore.WHITE + 'This operation will' + Fore.RED + ' permanently delete' + Fore.WHITE + ' the data' + Fore.WHITE)
+		inputchoice = input("Proceed? [y/n]")
+		while inputchoice != 'y' and inputchoice != 'n':
+			print(Fore.RED + "Type Correctly" + Fore.WHITE)
+			inputchoice = input("Proceed? [y/n]")
+
+		if inputchoice == 'y':
+			listTicketActive.pop(x)
+			print(Fore.GREEN + 'Ticket with ID', x+1, 'Succesfully Deleted' + Fore.WHITE)
+			newID = 1
+			for i in listTicketActive:
+				i.ID = str(newID)
+				newID += 1
+		else:
+			print('Operation Aborted')
+	else:
+		print('Data Not Found')
 
 Login()
 menu()
