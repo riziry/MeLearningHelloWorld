@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1591682789 source:/home/riziry/CodeFile/STD/2.7.1/body.cpp
+	"header.h"
+
+1591681569 /home/riziry/CodeFile/STD/2.7.1/header.h
+	<iostream>
+
+1591681569 source:/home/riziry/CodeFile/STD/2.7.1/main.cpp
+	<iostream>
+	"header.h"
+
