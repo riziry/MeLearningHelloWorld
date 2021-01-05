@@ -17,4 +17,5 @@ cat("x = daBankChurn$Customer_Age\n")
 cat("y = daBankChurn$Months_Inactive_12_mon\n")
 cat("Correlation of x and y: ", cor(x,y, method="pearson"), "\n")
 
-plot(daBankChurn$Months_on_book, daBankChurn$Credit_Limit)
+plot(daBankChurn$Months_on_book, daBankChurn$Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1)
+hist(daBankChurn$Income_Category)
