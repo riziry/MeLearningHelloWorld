@@ -1,0 +1,13 @@
+qAID,quizID,name,qDesc,scoremx,attemptTotal,questionTotal,qStart,qOver
+25,1,recall math sma 1,not open book,120,0,6,2020-03-01 7:30:00,2020-03-02 9:30:00
+26,2,recall math sma 2,not open book,120,0,6,2020-03-20 7:30:00,2020-03-20 9:30:00
+27,3,pertidaksamaan,open book,120,2,10,2020-04-01 7:30:00,2020-04-01 9:30:00
+28,4,fungsi,not open book kisi kisi dari ppt,120,2,6,2020-04-20 7:30:00,2020-04-20 9:30:00
+29,5,limit,not open book kisi kisi dari ppt,120,2,6,2020-05-01 7:30:00,2020-05-01 9:30:00
+30,6,fungsi kontinu,ujian,120,2,10,2020-05-20 7:30:00,2020-05-20 9:30:00
+25,7,recall math sma 1 batch2,not open book,120,2,6,2020-03-01 7:30:00,2020-03-01 9:30:00
+26,8,recall math sma 2 batch2,not open book,120,0,6,2020-03-20 7:30:00,2020-03-20 9:30:00
+27,9,pertidaksamaan batch2,open book,120,0,6,2020-04-01 7:30:00,2020-04-01 9:30:00
+28,10,fungsi batch2,not open book kisi kisi dari ppt,120,2,6,2020-04-20 7:30:00,2020-04-20 9:30:00
+29,11,limit batch2,not open book kisi kisi dari ppt,120,2,6,2020-05-01 7:30:00,2020-05-01 9:30:00
+30,12,fungsi kontinu batch2,ujian,120,2,15,2020-05-20 7:30:00,2020-05-20 9:30:00
