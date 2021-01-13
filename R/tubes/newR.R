@@ -1,3 +1,5 @@
+library(plyr)
+
 da <- read.csv("BankChurners.csv")
 dachg <- read.csv("DA4 BankChurners (2.0).csv")
 
@@ -66,3 +68,18 @@ result <- as.matrix(test)
 
 # heatmap(result, main="Heatmap Months_on_book and Customer_Age", xlab="Months_on_book", ylab="aCustomer_Age")
 heatmap(result)
+
+
+
+#Kesimpulan
+pie(table(da$Education_Level[da$Attrition_Flag=="Attrited Customer"]), main="Pie of Educational Customer that Attrited")
+
+pie(table(da$Card_Category[da$Attrition_Flag=="Attrited Customer" & da$Education_Level=="Graduate"]), main="Pie of Card_Category Customer that Attrited and Graduate")
+
+pie(table(da$Income_Category[da$Attrition_Flag=="Attrited Customer" & da$Education_Level=="Graduate" & da$Card_Category=="Blue"]), main="Pie of Income_Category Customer that Attrited, Graduate\nwith Blue Card")
+
+pie(table(da$Marital_Status[da$Attrition_Flag=="Attrited Customer" & da$Education_Level=="Graduate" & da$Card_Category=="Blue" & da$Income_Category=="Less than $40K"]), main="Pie of Marital_Status Customer that Attrited, Graduate\nwith Blue Card and have income less than $40k")
+
+pie(table(da$Gender[da$Attrition_Flag=="Attrited Customer" & da$Education_Level=="Graduate" & da$Card_Category=="Blue" & da$Income_Category=="Less than $40K" & da$Marital_Status=="Single"]), main="Pie of Gender Customer that Attrited, Graduate\nwith Blue Card, have income less than $40k and Single")
+
+# pie(table(da$[da$Attrition_Flag=="Attrited Customer" & da$Education_Level=="Graduate" & da$Card_Category=="Blue" & da$Income_Category=="Less than $40K" & da$Marital_Status=="Single"]), main="Pie of Marital_Status Customer that Attrited, Graduate\nwith Blue Card and have income less than $40k")
